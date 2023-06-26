@@ -230,21 +230,6 @@ labeledHeatmap(Matrix = moduleModuleCor,
                main = paste("Module-Module relationships"))
 
 
-
-# 重新计算模块的eigengenes
-MEs = moduleEigengenes(datExpr_smooth, moduleColors)$eigengenes
-# 提取体重的表型数据
-weight = as.data.frame(datTraits$IL4_PEC_NToma);
-names(weight) = "IL4_PEC_NToma"
-# 加入到相应的模块
-MET = orderMEs(cbind(MEs, weight))
-#画图
-sizeGrWindow(5,7.5);
-par(cex = 0.9)
-plotEigengeneNetworks(MET, "", marDendro = c(0,4,1,2), marHeatmap = c(3,4,1,2), cex.lab = 0.8, xLabelsAngle
-                      = 360)
-
-
 # output module network to cytoscape==================
 # Recalculate topological overlap if needed
 TOM = TOMsimilarityFromExpr(datExpr_smooth, power = softPower);
